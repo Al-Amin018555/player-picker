@@ -16,9 +16,9 @@
     <header>
         <div class="bg-gray-400">
             <div class="max-w-6xl mx-auto flex justify-between p-5 text-3xl">
-                <h4 class="font-bold">Budget: <span class="font-bold text-white">2500</span> $</h4>
-                <h4 class="font-bold">Cart: <span class="font-bold text-white">0</span></h4>
-                <h4 class="font-bold">Left: <span class="font-bold text-white">6</span></h4>
+                <h4 class="font-bold">Budget: <span id="budget" class="font-bold text-white ">2500</span> $</h4>
+                <h4 class="font-bold">Cart: <span id="cart" class="font-bold text-white">0</span></h4>
+                <h4 class="font-bold">Left: <span id="left" class="font-bold text-white">6</span></h4>
             </div>
         </div>
     </header>
@@ -167,8 +167,8 @@
             <h4 class="font-bold text-center text-2xl">Total Cost : <span id="total-cost">0</span> $</h4>
             <hr>
             <div class="my-5 text-center space-x-2">
-                <input type="text" placeholder="Coupon Code" class="input" />
-                <button class="btn">Apply</button>
+                <input type="text" id="coupon" placeholder="Coupon Code" class="input" />
+                <button onclick="updatedGrandtotalCost('apply-discount')" id="apply-btn" class="btn">Apply</button>
                 
             </div>
             <hr>

@@ -25,7 +25,24 @@ for (const btn of allBtn) {
         div.appendChild(p3);
 
         selectedContainer.appendChild(div);
+        
+        event.target.setAttribute('disabled','true');
+        
+        if(getConvertedValue('cart') + 1 > 6){
+            alert("You can't pick more player than six");
+            return;
+        }
+        event.target.parentNode.parentNode.style.backgroundColor = 'gray';
 
+        
+        const budget = getConvertedValue('budget');
+        document.getElementById('budget').innerText = budget - parseInt(price);
+
+        const cartCount = getConvertedValue('cart');
+        document.getElementById('cart').innerText = cartCount + 1;
+
+        const leftPlayer = getConvertedValue('left');
+        document.getElementById('left').innerText = leftPlayer - 1;  
 
         updatedTotalCost(price);
         updatedGrandtotalCost();
@@ -43,11 +60,27 @@ function updatedTotalCost(price) {
 
 }
 
-function updatedGrandtotalCost(){
-
+function updatedGrandtotalCost(status) {
     const totalCost = getConvertedValue('total-cost');
-    document.getElementById('grand-total').innerText = totalCost;
-    
+    if (status) {
+        const couponCode = document.getElementById('coupon').value;
+        if (couponCode === "love420") {
+            const discounted = totalCost * 0.2;
+            const grandTotal = totalCost - discounted;
+            document.getElementById('grand-total').innerText = grandTotal;
+
+        }
+        else {
+            alert('enter a valid coupon code');
+        }
+
+    }
+
+    else {
+        document.getElementById('grand-total').innerText = totalCost;
+    }
+
+
 }
 
 function getConvertedValue(id) {
@@ -56,3 +89,5 @@ function getConvertedValue(id) {
     const convertedValue = parseInt(value);
     return convertedValue;
 }
+
+
